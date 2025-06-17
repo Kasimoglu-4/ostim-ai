@@ -1,0 +1,60 @@
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static/
+  application: 
+    name: ostim.ai
+  ai:
+    ollama:
+      # chat:
+      base-url: http://localhost:11434/
+      # model: deepseek-r1:1.5b    
+      timeout: 300000
+      read: 300000
+  datasource:
+    url: jdbc:mysql://localhost:3306/ostim_ai_db?useSSL=false&serverTimezone=Europe/Istanbul&allowPublicKeyRetrieval=true
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 
+    initialization-mode: always
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 5
+      connection-test-query: SELECT 1
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: update
+      #dll-auto: create-drop
+      id:
+        new_generator_mappings: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
+  # h2:
+  #   console:
+  #     enabled: true
+  #     path: /h2-console
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 50MB
+      max-request-size: 75MB
+
+server:
+  port: 9191
+
+# File Storage Properties
+file:
+  upload-dir: ./uploads
+
+logging:
+  level:
+    root: INFO
+    com.omer.ostim.ai: DEBUG
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql: TRACE

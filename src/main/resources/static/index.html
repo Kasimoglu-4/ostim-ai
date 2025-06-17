@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Prompt</title>
+</head>
+<body>
+    <form id="promptForm">
+        <label for="prompt">Prompt:</label>
+        <input type="text" id="prompt" name="prompt"><br><br>
+        <label for="model">Model:</label>
+        <select id="model" name="model">
+            <option value="deepseek-coder:latest">deepseek-coder:latest</option>
+            <option value="deepseek-r1:1.5b">deepseek-r1:1.5b</option>
+        </select><br><br>
+        <button type="button" onclick="sendPrompt()">Send</button>
+    </form>
+
+    <div id="responseContainer" style="margin-top: 20px;">
+        <h3>Response:</h3>
+        <pre id="response"></pre>
+    </div>
+
+    <script>
+        function sendPrompt() {
+            const prompt = document.getElementById('prompt').value;
+            const model = document.getElementById('model').value;
+
+            fetch('/api/v1/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: prompt, model: model })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('response').textContent = 'Error: ' + error;
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+<!--using an alert -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>Send Prompt</title>
+</head>
+<body>
+    <form id="promptForm">
+        <label for="prompt">Prompt:</label>
+        <input type="text" id="prompt" name="prompt"><br><br>
+        <label for="model">Model:</label>
+        <select id="model" name="model">
+            <option value="deepseek-coder:latest">deepseek-coder:latest</option>
+            <option value="deepseek-r1:1.5b">deepseek-r1:1.5b</option>
+        </select><br><br>
+        <button type="button" onclick="sendPrompt()">Send</button>
+    </form>
+
+    <script>
+        function sendPrompt() {
+            const prompt = document.getElementById('prompt').value;
+            const model = document.getElementById('model').value;
+
+            fetch('/api/v1/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ prompt: prompt, model: model })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+                alert('Response: ' + JSON.stringify(data));
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html> -->

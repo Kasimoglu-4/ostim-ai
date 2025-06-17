@@ -1,0 +1,47 @@
+/* CSS Variables for consistent theming */
+:root {
+  /* Add your existing variables here */
+  --primary-color: #ffffff;
+  --secondary-color: #a0aec0;
+  --accent-color: #6366f1;
+  --accent-hover: #4f46e5;
+  --dark-overlay: rgba(0, 0, 0, 0.25);
+  
+  /* Chat backgrounds */
+  --chat-bg: #1d2029; /* Default empty chat background */
+  --active-chat-bg: #161822; /* Background after chat starts */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Custom scrollbar for modern look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(124, 58, 237, 0.7);
+}

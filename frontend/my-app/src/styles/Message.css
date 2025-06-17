@@ -1,0 +1,1215 @@
+.message-container {
+  display: flex;
+  padding: 12px 0;
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+}
+
+.message-container.user {
+  justify-content: flex-end;
+  margin-left: auto;
+  width: fit-content;
+  max-width: 85%;
+  flex-direction: column;
+  align-items: flex-end;
+  position: relative;
+}
+
+.message-container.assistant {
+  justify-content: flex-start;
+  padding-left: 0;
+  margin-left: 0;
+  width: fit-content;
+  max-width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.message-container.error {
+  justify-content: center;
+  margin-right: 255px;
+}
+
+/* 
+ * IMPORTANT: This class ensures consistent positioning for assistant messages
+ * regardless of which model (DeepSeek R1 or DeepSeek Coder) generated the response.
+ * It enforces left alignment with stronger positioning rules to prevent inconsistencies.
+ */
+.message-container.left-edge {
+  margin-left: 0;
+  padding-left: 0;
+  justify-content: flex-start;
+  align-self: flex-start;
+}
+
+.message-container .message-content {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+  position: relative;
+}
+
+/* Create a wrapper for the avatar and content to keep them on same line */
+.message-container.assistant .avatar-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.message-avatar {
+  align-self: flex-start;
+  margin-right: 8px;
+  margin-top: 1px;
+}
+
+.message-container.user .message-avatar {
+  order: 2;
+  margin-right: 0;
+  margin-left: 12px;
+}
+
+.message-container.assistant .message-avatar {
+  margin-left: 0;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: white;
+  background-color: var(--accent-color);
+}
+
+.message-content {
+  padding: 14px 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-color);
+  width: auto;
+  display: inline-block;
+  position: relative;
+}
+
+.message-container.user .message-content {
+  background-color: var(--message-user-bg);
+  color: var(--primary-color);
+  border: none;
+  align-self: flex-end;
+  min-width: 80px;
+  max-width: 100%;
+  word-break: break-word;
+  border-radius: 18px;
+  padding: 10px 16px;
+  text-align: center;
+}
+
+body.light-theme .message-container.user .message-content {
+  background-color: #d5e3f7;
+  color: #1e3a5f;
+  box-shadow: 0 1px 2px rgba(30, 58, 95, 0.05);
+}
+
+body.sepia-theme .message-container.user .message-content {
+  background-color: var(--message-user-bg);
+  color: var(--primary-color);
+  box-shadow: 0 1px 2px rgba(91, 70, 54, 0.05);
+}
+
+.message-container.assistant .message-content {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0 0 14px 0;
+  margin-left: 0;
+  border-radius: 0;
+  min-width: 80px;
+  align-self: flex-start;
+  transform: translateY(8px);
+}
+
+/* Improve assistant message styling in light/sepia themes */
+body.light-theme .message-container.assistant .message-content {
+  color: #1e3a5f;
+}
+
+body.sepia-theme .message-container.assistant .message-content {
+  color: var(--primary-color);
+}
+
+.message-container.error .message-content {
+  background-color: rgba(248, 113, 113, 0.1);
+  color: var(--error-color);
+  border-color: var(--error-color);
+}
+
+.message-time {
+  color: var(--secondary-color);
+  font-size: 11px;
+}
+
+.message-container.user .message-time {
+  color: var(--secondary-color);
+  margin-top: 4px;
+  margin-right: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.message-container.user:hover .message-time {
+  opacity: 1;
+}
+
+/* Timestamp for assistant messages, now displayed outside the bubble */
+.assistant-time {
+  font-size: 11px;
+  color: var(--secondary-color);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+/* Show timestamp on hover */
+.message-container.assistant:hover .assistant-time {
+  opacity: 0.7;
+}
+
+/* Show assistant controls on hover */
+.message-container.assistant:hover .assistant-controls {
+  opacity: 1;
+}
+
+/* Horizontal container for assistant controls */
+.assistant-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 8px;
+  gap: 16px;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+/* Material Design inspired feedback buttons - hidden by default */
+.message-feedback {
+  display: flex;
+  gap: 4px;
+  transition: all 0.3s ease;
+  opacity: 0.85; /* Make buttons more visible by default */
+  z-index: 100; /* Ensure buttons are clickable */
+  background-color: transparent; /* Make it transparent to blend with any background */
+  padding: 4px 8px;
+  border-radius: 4px;
+  box-shadow: none; /* Remove shadow for a cleaner look */
+  flex-shrink: 0;
+}
+
+/* Show feedback buttons when hovering over the message container */
+.message-container.assistant:hover .message-feedback {
+  opacity: 1;
+  visibility: visible;
+}
+
+.feedback-button {
+  width: 28px; /* Increase button size */
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  color: var(--secondary-color); /* Use theme variable instead */
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  padding: 5px; /* Add padding for better clickability */
+}
+
+.feedback-button svg {
+  width: 16px; /* Increase icon size */
+  height: 16px;
+  transition: all 0.2s ease;
+}
+
+/* Button hover effects */
+.feedback-button:hover {
+  transform: translateY(-2px);
+  background-color: rgba(128, 128, 128, 0.1); /* Subtle gray background with very low opacity */
+}
+
+.feedback-button:hover svg {
+  transform: scale(1.1);
+}
+
+/* Button color schemes - colors only, no backgrounds */
+.feedback-button[title="Copy"] {
+  color: var(--secondary-color);
+}
+
+.feedback-button[title="Copy"]:hover {
+  color: var(--accent-color);
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.feedback-button[title="Regenerate"] {
+  color: var(--secondary-color);
+}
+
+.feedback-button[title="Regenerate"]:hover {
+  color: var(--accent-color);
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.feedback-button[title="Like"] {
+  color: var(--secondary-color);
+}
+
+.feedback-button[title="Like"]:hover {
+  color: var(--success-color);
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.feedback-button[title="Like"].active {
+  color: var(--success-color);
+  background-color: rgba(52, 211, 153, 0.1); /* Light background for the active like button */
+  box-shadow: none;
+}
+
+.feedback-button[title="Dislike"] {
+  color: var(--secondary-color);
+}
+
+.feedback-button[title="Dislike"]:hover {
+  color: var(--error-color);
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.feedback-button[title="Dislike"].active {
+  color: var(--error-color);
+  background-color: rgba(248, 113, 113, 0.1); /* Light background for the active dislike button */
+  box-shadow: none;
+}
+
+/* Read button styles */
+.feedback-button[title="Read message"], 
+.feedback-button[title="Stop reading"] {
+  color: var(--secondary-color);
+}
+
+.feedback-button[title="Read message"]:hover {
+  color: #3b82f6; /* Blue color for read */
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.feedback-button[title="Stop reading"] {
+  color: #3b82f6;
+  background-color: rgba(59, 130, 246, 0.1);
+  animation: pulse 2s infinite;
+}
+
+.feedback-button[title="Stop reading"]:hover {
+  color: #2563eb;
+  background-color: rgba(59, 130, 246, 0.2);
+}
+
+/* Pulse animation for active reading state */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+  }
+}
+
+/* Active states - color only version */
+.feedback-button.active {
+  color: inherit;
+}
+
+/* Animated transitions */
+.feedback-button {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.feedback-button:hover {
+  transform: translateY(-2px);
+}
+
+.feedback-button:active {
+  transform: translateY(0);
+}
+
+/* Labels that appear on hover */
+.feedback-button::before {
+  content: attr(title);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: transparent;
+  color: var(--primary-color);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: none;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.feedback-button:hover::before {
+  opacity: 1;
+  visibility: visible;
+  bottom: -30px;
+}
+
+/* Improve the animation timing for showing feedback buttons */
+.message-container.assistant .message-feedback {
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  transition-delay: 0s;
+}
+
+.message-container.assistant:hover .message-feedback {
+  transition-delay: 0.05s;
+}
+
+.message-text {
+  font-size: 16px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Style for bold text */
+.message-text strong,
+.clean-content strong,
+.think-content strong {
+  font-weight: 700;
+}
+
+/* Styling for inline code blocks */
+code.code-inline {
+  background-color: #2a2a2a;
+  color: #ffffff;
+  padding: 3px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline;
+  margin: 0 2px;
+  position: relative;
+  top: -1px;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* LaTeX equation styling */
+.latex-display-equation {
+  display: block;
+  margin: 2px auto;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 1.2em;
+  padding: 0;
+  line-height: 1.2;
+  color: inherit;
+}
+
+.latex-inline-equation {
+  font-family: 'Times New Roman', Times, serif;
+  font-style: italic;
+  padding: 0 2px;
+  font-size: 1.05em;
+  white-space: nowrap;
+  color: inherit;
+}
+
+/* Fraction styling */
+.fraction {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+  margin: 0 2px;
+}
+
+.fraction .numerator {
+  display: block;
+  font-size: 0.85em;
+  line-height: 1;
+  padding-bottom: 2px;
+  border-bottom: 1px solid currentColor;
+  margin-bottom: 2px;
+}
+
+.fraction .denominator {
+  display: block;
+  font-size: 0.85em;
+  line-height: 1;
+  padding-top: 2px;
+}
+
+/* Boxed result styling */
+.boxed-result {
+  border: 2px solid currentColor;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  margin: 0 4px;
+  display: inline-block;
+}
+
+/* Square root styling */
+.sqrt {
+  position: relative;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.sqrt-content {
+  border-top: 1px solid currentColor;
+  padding-top: 2px;
+  margin-left: 2px;
+}
+
+/* Superscript and subscript styling */
+sup, sub {
+  font-size: 0.75em;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Ensure LaTeX equations look good in all themes */
+body.light-theme .latex-display-equation,
+body.light-theme .latex-inline-equation {
+  color: var(--primary-color);
+}
+
+body.sepia-theme .latex-display-equation,
+body.sepia-theme .latex-inline-equation {
+  color: var(--primary-color);
+}
+
+body.dark-theme .latex-display-equation,
+body.dark-theme .latex-inline-equation {
+  color: #ffffff;
+}
+
+/* Theme-specific styling for mathematical elements */
+body.light-theme .fraction .numerator,
+body.light-theme .boxed-result {
+  border-color: var(--primary-color);
+}
+
+body.light-theme .sqrt-content {
+  border-top-color: var(--primary-color);
+}
+
+body.sepia-theme .fraction .numerator,
+body.sepia-theme .boxed-result {
+  border-color: var(--primary-color);
+}
+
+body.sepia-theme .sqrt-content {
+  border-top-color: var(--primary-color);
+}
+
+body.dark-theme .fraction .numerator,
+body.dark-theme .boxed-result {
+  border-color: #ffffff;
+}
+
+body.dark-theme .sqrt-content {
+  border-top-color: #ffffff;
+}
+
+/* List styling */
+.message-ol, .message-ul {
+  margin: 8px 0;
+  padding-left: 24px;
+}
+
+.message-ol {
+  list-style-type: decimal;
+}
+
+.message-ul {
+  list-style-type: disc;
+  margin-top: 6px;
+}
+
+/* Custom ordered list styling */
+.custom-ordered-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.custom-list-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+.item-number {
+  flex-shrink: 0;
+  min-width: 24px;
+  font-weight: normal;
+  padding-right: 4px;
+}
+
+.item-content {
+  flex-grow: 1;
+}
+
+.message-li {
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+
+.message-li:last-child {
+  margin-bottom: 0;
+}
+
+/* Nested list indentation */
+.message-li .message-ul, .message-li .message-ol {
+  margin-top: 6px;
+  padding-left: 20px;
+}
+
+/* Light theme styling for inline code */
+body.light-theme code.code-inline {
+  background-color: #e2e2e2;
+  color: #333333;
+}
+
+/* Sepia theme styling for inline code */
+body.sepia-theme code.code-inline {
+  background-color: #e2d9cf;
+  color: #5b4636;
+}
+
+body.light-theme .message-text {
+  color: var(--primary-color);
+}
+
+body.sepia-theme .message-text {
+  color: var(--primary-color);
+}
+
+/* Fix AI message styling */
+body.light-theme .message-container.assistant .avatar-content-wrapper {
+  color: var(--primary-color);
+}
+
+body.sepia-theme .message-container.assistant .avatar-content-wrapper {
+  color: var(--primary-color);
+}
+
+/* Fix the code blocks in light/sepia themes */
+body.light-theme pre code,
+body.sepia-theme pre code {
+  color: var(--primary-color);
+}
+
+body.light-theme pre,
+body.sepia-theme pre {
+  background-color: var(--tertiary-bg);
+  border: 1px solid var(--border-color);
+}
+
+.message-container.user .message-text {
+  margin-right: 0;
+  text-align: center;
+}
+
+/* Clean content without think tags */
+.clean-content {
+  display: block;
+  width: 100%;
+}
+
+/* Thinking section container */
+.thinking-section {
+  margin-top: 16px;
+  border-top: 1px solid var(--border-color);
+  position: relative;
+  background-color: var(--tertiary-bg);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Thinking header style */
+.thinking-header {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--accent-color);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+/* Styling for think content */
+.think-content {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin: 8px 0;
+  color: var(--secondary-color);
+  /* font-family: 'Menlo', 'Monaco', 'Courier New', monospace; */
+  font-family: 'Arial';
+  font-size: 13px;
+  line-height: 1.5;
+  border-left: 2px solid var(--accent-color);
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+body.light-theme .think-content {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #4a4a4a;
+  border-left: 2px solid var(--accent-color);
+}
+
+body.sepia-theme .think-content {
+  background-color: rgba(91, 70, 54, 0.08);
+  color: #5b4636;
+  border-left: 2px solid var(--accent-color);
+}
+
+/* Styling for dark theme */
+body.dark-theme .thinking-section {
+  background-color: #2d3038;
+}
+
+body.dark-theme .think-content {
+  background-color: #262a36;
+  color: #d0d0d0;
+}
+
+.message-actions {
+  position: absolute;
+  left: -70px;
+  top: 43%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.message-container.user:hover .message-actions {
+  opacity: 1;
+}
+
+.action-button {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  transform: translateY(-1px);
+}
+
+/* Edit mode styles */
+.edit-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.edit-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--primary-color);
+  font-family: inherit;
+  font-size: 16px;
+  resize: none;
+  outline: none;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 11px;
+  margin-top: 4px;
+}
+
+.edit-button {
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.edit-button.save {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.edit-button.save:hover {
+  background-color: var(--accent-hover);
+}
+
+.edit-button.cancel {
+  background-color: var(--tertiary-bg);
+  color: var(--primary-color);
+}
+
+.edit-button.cancel:hover {
+  background-color: var(--sidebar-item-hover);
+}
+
+/* Animation for the feedback buttons on page load */
+.message-feedback {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.85;
+    transform: translateY(0);
+  }
+}
+
+/* Remove the dots indicator */
+.message-container.assistant::after {
+  display: none;
+}
+
+/* File attachment styles */
+.message-attachments {
+  margin-top: 10px;
+}
+
+.file-attachment {
+  display: flex;
+  align-items: center;
+  background-color: var(--tertiary-bg);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  max-width: 300px;
+}
+
+.file-attachment:hover {
+  background-color: var(--sidebar-item-hover);
+  box-shadow: var(--context-menu-shadow);
+  transform: translateY(-1px);
+}
+
+.file-icon {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.file-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary-color);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-size {
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+/* File error state */
+.file-attachment.file-error {
+  background-color: rgba(255, 235, 235, 0.9);
+}
+
+.file-attachment.file-error .file-name {
+  color: var(--error-color);
+}
+
+/* Better styling for feedback buttons in light/sepia */
+body.light-theme .feedback-button,
+body.sepia-theme .feedback-button {
+  color: var(--secondary-color);
+}
+
+body.light-theme .feedback-button:hover,
+body.sepia-theme .feedback-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+body.light-theme .assistant-time {
+  color: #5d7ea7;
+}
+
+/* Code block styles */
+.code-block-container {
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #212327;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  width: 742px;
+  position: relative;
+  left: 0;
+}
+
+.code-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2d2d2d;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.code-language {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.code-copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 12px;
+}
+
+.code-copy-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.code-copy-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Ensure syntax highlighter fits properly */
+.code-block-container pre {
+  margin: 0 !important;
+  background-color: #212327 !important;
+}
+
+.code-block-container pre code {
+  background-color: #212327 !important;
+}
+
+.code-block-container .token.comment {
+  font-style: italic;
+}
+
+/* Style for message content with code blocks */
+.message-content-parsed {
+  display: block;
+}
+
+.clean-content {
+  display: block;
+}
+
+/* Responsive adjustments for code blocks */
+@media (max-width: 768px) {
+  .code-block-container {
+    margin: 12px 0;
+    border-radius: 6px;
+    width: calc(100vw - 60px);
+    max-width: none;
+  }
+  
+  .code-block-header {
+    padding: 6px 12px;
+  }
+  
+  .code-language {
+    font-size: 11px;
+  }
+  
+  .code-copy-button {
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .code-block-container {
+    width: calc(100vw - 40px);
+  }
+}
+
+/* Theme adjustments for code blocks */
+body.light-theme .code-block-container {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+}
+
+body.light-theme .code-block-header {
+  background-color: #e9ecef;
+  border-bottom: 1px solid #dee2e6;
+}
+
+body.light-theme .code-language {
+  color: #6c757d;
+}
+
+body.light-theme .code-copy-button {
+  color: #6c757d;
+}
+
+body.light-theme .code-copy-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #495057;
+}
+
+body.sepia-theme .code-block-container {
+  background-color: #f4f1e8;
+  border: 1px solid #e8dcc0;
+}
+
+body.sepia-theme .code-block-header {
+  background-color: #e8dcc0;
+  border-bottom: 1px solid #ddd0b0;
+}
+
+body.sepia-theme .code-language {
+  color: #8b7355;
+}
+
+body.sepia-theme .code-copy-button {
+  color: #8b7355;
+}
+
+body.sepia-theme .code-copy-button:hover {
+  background-color: rgba(139, 115, 85, 0.1);
+  color: #6b5635;
+}
+
+/* Response navigation controls */
+.response-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.message-container.assistant:hover .response-navigation {
+  opacity: 1;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.nav-button:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+  color: var(--accent-color);
+  transform: scale(1.1);
+}
+
+.nav-button:active {
+  transform: scale(0.95);
+}
+
+.nav-button svg {
+  width: 14px;
+  height: 14px;
+}
+
+.response-counter {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  min-width: 32px;
+  text-align: center;
+  user-select: none;
+}
+
+/* Theme adjustments for navigation controls */
+body.light-theme .nav-button {
+  color: #6c757d;
+}
+
+body.light-theme .nav-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--accent-color);
+}
+
+body.light-theme .response-counter {
+  color: #6c757d;
+  background-color: transparent;
+}
+
+body.sepia-theme .nav-button {
+  color: #8b7355;
+}
+
+body.sepia-theme .nav-button:hover {
+  background-color: rgba(139, 115, 85, 0.1);
+  color: var(--accent-color);
+}
+
+body.sepia-theme .response-counter {
+  color: var(--secondary-color);
+}
+
+/* Search highlighting styles */
+.search-highlight {
+  background-color: rgba(255, 235, 59, 0.4);
+  color: #f57f17;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-weight: 600;
+  animation: highlightPulse 2s ease-in-out;
+  box-shadow: 0 0 4px rgba(255, 235, 59, 0.3);
+}
+
+@keyframes highlightPulse {
+  0% {
+    background-color: rgba(255, 235, 59, 0.7);
+    box-shadow: 0 0 8px rgba(255, 235, 59, 0.5);
+  }
+  50% {
+    background-color: rgba(255, 235, 59, 0.5);
+    box-shadow: 0 0 6px rgba(255, 235, 59, 0.3);
+  }
+  100% {
+    background-color: rgba(255, 235, 59, 0.4);
+    box-shadow: 0 0 4px rgba(255, 235, 59, 0.3);
+  }
+}
+
+/* Theme-specific search highlighting */
+body.light-theme .search-highlight {
+  background-color: rgba(255, 193, 7, 0.3);
+  color: #e65100;
+  box-shadow: 0 0 4px rgba(255, 193, 7, 0.2);
+  animation: highlightPulseLight 2s ease-in-out;
+}
+
+@keyframes highlightPulseLight {
+  0% {
+    background-color: rgba(255, 193, 7, 0.5);
+    box-shadow: 0 0 8px rgba(255, 193, 7, 0.3);
+  }
+  50% {
+    background-color: rgba(255, 193, 7, 0.4);
+    box-shadow: 0 0 6px rgba(255, 193, 7, 0.2);
+  }
+  100% {
+    background-color: rgba(255, 193, 7, 0.3);
+    box-shadow: 0 0 4px rgba(255, 193, 7, 0.2);
+  }
+}
+
+body.sepia-theme .search-highlight {
+  background-color: rgba(255, 183, 77, 0.4);
+  color: #bf360c;
+  box-shadow: 0 0 4px rgba(255, 183, 77, 0.3);
+  animation: highlightPulseSepia 2s ease-in-out;
+}
+
+@keyframes highlightPulseSepia {
+  0% {
+    background-color: rgba(255, 183, 77, 0.6);
+    box-shadow: 0 0 8px rgba(255, 183, 77, 0.4);
+  }
+  50% {
+    background-color: rgba(255, 183, 77, 0.5);
+    box-shadow: 0 0 6px rgba(255, 183, 77, 0.3);
+  }
+  100% {
+    background-color: rgba(255, 183, 77, 0.4);
+    box-shadow: 0 0 4px rgba(255, 183, 77, 0.3);
+  }
+} 

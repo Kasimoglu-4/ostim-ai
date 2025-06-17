@@ -1,0 +1,42 @@
+.switch-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.check {
+  display: none;
+}
+
+.arrow-button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 24px;
+  cursor: pointer;
+}
+
+/* Styles for the arrow icon */
+.arrow-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--primary-color);
+  transition: transform 0.4s cubic-bezier(0.4, 1.2, 0.6, 1);
+}
+
+/* When isChecked is true (sidebar is collapsed), flip the arrow */
+.arrow-flipped {
+  transform: rotate(180deg);
+}
+
+/* Hover effects */
+.arrow-button:hover .arrow-icon {
+  transform: scale(1.3);
+}
+
+.arrow-button:hover .arrow-flipped {
+  transform: scale(1.3) rotate(180deg);
+}
+

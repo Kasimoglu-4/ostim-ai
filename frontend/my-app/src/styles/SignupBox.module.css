@@ -1,0 +1,160 @@
+.signupBox {
+  width: 477px;
+  min-height: 528px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--tertiary-bg) !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--dark-overlay);
+  color: var(--primary-color) !important;
+}
+
+.signupBox * {
+  color: var(--primary-color) !important;
+}
+
+.signupBox .MuiInputBase-root,
+.signupBox .MuiInputLabel-root {
+  color: var(--primary-color) !important;
+}
+
+.signupBox .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.form {
+  width: 100%;
+}
+
+.signupFormButton {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.signupFormButton:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+.link {
+  color: var(--accent-color) !important;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.alert {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.errorAlert {
+  composes: alert;
+  background-color: rgba(244, 67, 54, 0.1) !important;
+  color: var(--error-color) !important;
+  border: 1px solid var(--error-color) !important;
+}
+
+.errorAlert * {
+  color: var(--error-color) !important;
+}
+
+.successAlert {
+  composes: alert;
+  background-color: rgba(52, 211, 153, 0.1) !important;
+  color: var(--success-color) !important;
+  border: 1px solid var(--success-color) !important;
+}
+
+.successAlert * {
+  color: var(--success-color) !important;
+}
+
+.title {
+  font-family: 'Zen Tokyo Zoo', cursive, sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.5px;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.subtitle {
+  margin-bottom: 24px;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.signupBg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--primary-bg);
+  color: var(--primary-color);
+}
+
+.signupTitleBox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.signupLinkBox {
+  text-align: center;
+}
+
+.signupButton {
+  background-image: linear-gradient(to right, #6018dc, #eead92) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  transition: all 1.2s ease-in-out !important;
+  font-size: 15px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.signupButton:hover {
+  background-image: linear-gradient(to right, #6018dcc0, #eead92) !important;
+}
+
+.signinButton {
+  background-image: linear-gradient(to right, #00537e , #3aa17e) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  transition: all 1.2s ease-in-out !important;
+  font-size: 15px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.signinButton:hover {
+  background-image: linear-gradient(to right, #2a7ba3 , #57c6a1) !important;
+}
+
+.zenTokyoZoo {
+  font-family: "Zen Tokyo Zoo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.themeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.themeLabel {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--secondary-color) !important;
+  font-weight: 500;
+}

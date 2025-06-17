@@ -1,0 +1,81 @@
+/* ChatInterface Component Styles */
+/* Main orchestrator component - focused only on layout */
+
+.chat-interface {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--primary-bg);
+  position: relative;
+  /* Ensure proper stacking context */
+  z-index: 0;
+}
+
+/* Chat Area Styles */
+.chat-interface .chat-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-left: none;
+  /* Smooth transitions for better UX */
+  transition: max-width 0.3s ease, margin 0.3s ease;
+}
+
+/* Collapsed Sidebar Styles */
+/* Enhanced styles for content centering when sidebar is collapsed */
+.chat-interface .sidebar.collapsed + .chat-area {
+  max-width: 1480px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  border-left: none;
+  background-color: var(--chat-bg);
+  /* Ensure content remains centered on larger screens */
+  padding: 0 1rem;
+}
+
+/* Component Integration Styles */
+.chat-interface .conversation-operations,
+.chat-interface .message-operations {
+  /* Ensure sub-components integrate smoothly */
+  height: 100%;
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-interface {
+    flex-direction: column;
+  }
+  
+  .chat-interface .sidebar.collapsed + .chat-area {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+/* Performance optimizations */
+.chat-interface *,
+.chat-interface *::before,
+.chat-interface *::after {
+  /* Enable hardware acceleration for smoother animations */
+  will-change: auto;
+}
+
+/* Accessibility support */
+@media (prefers-contrast: high) {
+  .chat-interface {
+    border: 2px solid;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chat-interface .chat-area {
+    transition: none;
+  }
+} 

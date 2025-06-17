@@ -1,0 +1,265 @@
+/* MessageOperations Component Styles */
+/* Handles styling for message-related operations */
+
+.message-operations {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.message-operation-container {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.message-edit-container {
+  background-color: var(--tertiary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.message-edit-input {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  background-color: var(--primary-bg);
+  color: var(--primary-color);
+  font-family: inherit;
+  font-size: 0.875rem;
+  resize: vertical;
+  outline: none;
+}
+
+.message-edit-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+.message-edit-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  justify-content: flex-end;
+}
+
+.message-edit-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.message-edit-button.save {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.message-edit-button.save:hover {
+  background-color: var(--accent-hover);
+}
+
+.message-edit-button.cancel {
+  background-color: var(--secondary-bg);
+  color: var(--secondary-color);
+  border: 1px solid var(--border-color);
+}
+
+.message-edit-button.cancel:hover {
+  background-color: var(--tertiary-bg);
+  color: var(--primary-color);
+}
+
+.message-regenerate-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border: 1px dashed var(--border-color);
+  border-radius: 0.5rem;
+  margin: 0.5rem 0;
+  background-color: var(--tertiary-bg);
+}
+
+.message-regenerate-button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--accent-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.message-regenerate-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.message-regenerate-button:disabled {
+  background-color: var(--disabled-color);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.message-regenerate-button.loading {
+  position: relative;
+  color: transparent;
+}
+
+.message-regenerate-button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.message-response-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: var(--secondary-bg);
+  border-radius: 0.375rem;
+  margin: 0.25rem 0;
+}
+
+.message-response-button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: transparent;
+  color: var(--secondary-color);
+}
+
+.message-response-button:hover {
+  background-color: var(--tertiary-bg);
+  color: var(--primary-color);
+}
+
+.message-response-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.message-response-indicator {
+  font-size: 0.75rem;
+  color: var(--secondary-color);
+  padding: 0 0.5rem;
+}
+
+.message-loading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--secondary-color);
+}
+
+.message-loading-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--border-color);
+  border-top: 2px solid var(--accent-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error states */
+.message-error-container {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid #ef4444;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  color: #ef4444;
+  text-align: center;
+}
+
+.message-error-retry {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.message-error-retry:hover {
+  background-color: #dc2626;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .message-edit-actions {
+    flex-direction: column;
+  }
+  
+  .message-edit-button {
+    padding: 0.75rem 1rem;
+  }
+  
+  .message-response-navigation {
+    flex-wrap: wrap;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .message-edit-input {
+    border-width: 2px;
+  }
+  
+  .message-edit-button,
+  .message-regenerate-button {
+    border: 2px solid var(--border-color);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .message-edit-button,
+  .message-regenerate-button,
+  .message-response-button {
+    transition: none;
+  }
+  
+  .message-loading-spinner,
+  .message-regenerate-button.loading::after {
+    animation: none;
+  }
+} 

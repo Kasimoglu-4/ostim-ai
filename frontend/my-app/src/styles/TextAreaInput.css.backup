@@ -1,0 +1,755 @@
+/* Common styles */
+.welcome-input-container,
+.message-input-container {
+  padding: 0 0 10px 0;
+  background-color: #1d2029;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.light-theme .welcome-input-container,
+body.light-theme .message-input-container {
+  background-color: var(--chat-bg);
+}
+
+body.sepia-theme .welcome-input-container,
+body.sepia-theme .message-input-container {
+  background-color: var(--chat-bg);
+}
+
+/* Welcome input container specific */
+.welcome-input-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.welcome-form,
+.message-form {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  align-items: center;
+}
+
+/* Message form specific */
+.message-form {
+  max-width: 790px;
+  width: 790px;
+  position: relative;
+}
+
+/* Adjust message-form alignment for sidebar collapsed state */
+.sidebar.collapsed ~ .chat-area .message-form {
+  margin: 0 auto;
+}
+
+/* Welcome form specific */
+.welcome-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Input wrappers */
+.welcome-input-wrapper,
+.input-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Welcome input wrapper specific */
+.welcome-input-wrapper {
+  width: 661px;
+  height: 111px;
+  border-radius: 25px;
+  border: 1px solid var(--border-color);
+  background-color: var(--tertiary-bg);
+  margin: 0 auto;
+}
+
+body.light-theme .welcome-input-wrapper {
+  background-color: #ffffff;
+  border: 1px solid #d9e6f6;
+  box-shadow: 0 1px 3px rgba(30, 58, 95, 0.05);
+}
+
+body.sepia-theme .welcome-input-wrapper {
+  background-color: var(--tertiary-bg);
+  border: 1px solid #e0d6c8;
+  box-shadow: 0 1px 3px rgba(91, 70, 54, 0.05);
+}
+
+/* Inputs */
+.welcome-input,
+.message-input {
+  width: 100%;
+  min-height: 50px;
+  max-height: 150px;
+  padding: 16px 16px 60px 16px;
+  border-radius: 25px;
+  font-size: 16px;
+  line-height: 20px;
+  resize: none;
+  outline: none;
+  font-family: inherit;
+  background-color: #262a36;
+  color: var(--primary-color);
+  transition: all 0.3s;
+  overflow-y: auto;
+}
+
+body.light-theme .welcome-input,
+body.light-theme .message-input {
+  background-color: var(--tertiary-bg);
+}
+
+body.sepia-theme .welcome-input,
+body.sepia-theme .message-input {
+  background-color: var(--tertiary-bg);
+}
+
+/* Welcome input specific */
+.welcome-input {
+  height: 111px;
+  background-color: transparent;
+  border: none;
+}
+
+/* Message input specific */
+.message-input {
+  height: auto;
+  min-height: 60px;
+  border: 1px solid var(--border-color);
+  transition: height 0.1s ease;
+}
+
+body.light-theme .message-input {
+  border: 1px solid #d9e6f6;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(30, 58, 95, 0.05);
+}
+
+body.sepia-theme .message-input {
+  border: 1px solid #e0d6c8;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(91, 70, 54, 0.05);
+}
+
+.welcome-input::placeholder,
+.message-input::placeholder {
+  color: var(--secondary-color);
+}
+
+body.light-theme .welcome-input::placeholder,
+body.light-theme .message-input::placeholder {
+  color: #8c8c8c;
+}
+
+body.sepia-theme .welcome-input::placeholder,
+body.sepia-theme .message-input::placeholder {
+  color: #a89683;
+}
+
+.welcome-input:focus,
+.message-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
+}
+
+.welcome-input:disabled,
+.message-input:disabled {
+  background-color: var(--secondary-bg);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Model Buttons */
+.welcome-model-buttons,
+.chat-model-buttons {
+  position: absolute;
+  bottom: 1px;
+  left: 11px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #262a36;
+  padding: 13px 20px 7px;
+  overflow: hidden;
+  border-radius: 0 0 22px 24px;
+  margin-left: -10px;
+  width: 99%;
+}
+
+/* Add theme-specific styles for chat-model-buttons */
+body.light-theme .welcome-model-buttons,
+body.light-theme .chat-model-buttons {
+  background-color: var(--tertiary-bg);
+}
+
+body.sepia-theme .welcome-model-buttons,
+body.sepia-theme .chat-model-buttons {
+  background-color: var(--tertiary-bg);
+}
+
+/* Make chat-model-buttons match the input background for better integration */
+body.light-theme .chat-model-buttons {
+  background-color: #ffffff;
+}
+
+body.sepia-theme .chat-model-buttons {
+  background-color: #fff;
+}
+
+/* Fix chat-model-buttons background when disabled/loading */
+.message-input:disabled ~ .chat-model-buttons {
+  background-color: var(--secondary-bg);
+}
+
+/* Add theme-specific styles for disabled chat-model-buttons */
+body.light-theme .message-input:disabled ~ .chat-model-buttons {
+  background-color: #ffffff;
+  opacity: 0.8;
+}
+
+body.sepia-theme .message-input:disabled ~ .chat-model-buttons {
+  background-color: #fff;
+  opacity: 0.8;
+}
+
+/* Fix chat model buttons disabled state */
+.chat-model-button:disabled,
+.welcome-model-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.welcome-model-button,
+.chat-model-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.welcome-model-button:hover,
+.chat-model-button:hover {
+  background-color: rgba(124, 58, 237, 0.1);
+  border-color: var(--accent-color);
+  color: var(--primary-color);
+}
+
+/* Prevent hover effect on disabled buttons */
+.chat-model-button:disabled:hover,
+.welcome-model-button:disabled:hover {
+  background-color: transparent;
+  color: var(--secondary-color);
+  border-color: transparent;
+}
+
+/* Button hover styles - consolidated */
+body.light-theme .welcome-model-button:hover,
+body.light-theme .chat-model-button:hover {
+  background-color: rgba(74, 125, 252, 0.08);
+}
+
+body.sepia-theme .welcome-model-button:hover,
+body.sepia-theme .chat-model-button:hover {
+  background-color: rgba(166, 124, 82, 0.08);
+}
+
+/* Focus styles - consolidated */
+body.light-theme .message-input:focus {
+  border-color: #4a7dfc;
+  box-shadow: 0 0 0 2px rgba(74, 125, 252, 0.2);
+}
+
+body.sepia-theme .message-input:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(166, 124, 82, 0.2);
+}
+
+.welcome-model-button.active {
+  background-color: rgba(124, 58, 237, 0.15);
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.chat-model-button.active {
+  color: white;
+}
+
+.chat-model-button.active.purple {
+  background-color: #5A4FCF;
+}
+
+.chat-model-button.active.blue {
+  background-color: #2191DB;
+}
+
+/* Specific style for Deepseek Think button */
+.chat-model-button.active.think-purple {
+  background-color: #9C27B0;
+}
+
+/* Specific style for the thinking toggle button */
+.chat-model-button.think-toggle {
+  border: 1px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.chat-model-button.think-toggle:hover {
+  border: 1px dashed var(--accent-color);
+  background-color: rgba(156, 39, 176, 0.08);
+}
+
+.chat-model-button.think-toggle.think-active {
+  background-color: rgba(156, 39, 176, 0.2);
+  color: #9C27B0;
+  border: 1px dashed #9C27B0;
+}
+
+/* Welcome mode think-toggle styles */
+.welcome-model-button.think-toggle {
+  border: 1px dashed transparent;
+  transition: all 0.2s ease;
+}
+
+.welcome-model-button.think-toggle:hover {
+  border: 1px dashed var(--accent-color);
+  background-color: rgba(156, 39, 176, 0.08);
+}
+
+.welcome-model-button.think-toggle.think-active {
+  background-color: rgba(156, 39, 176, 0.2);
+  color: #9C27B0;
+  border: 1px dashed #9C27B0;
+}
+
+.welcome-model-icon,
+.chat-model-icon {
+  margin-right: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-model-icon {
+  font-size: 10px;
+}
+
+/* Action Buttons */
+.welcome-action-buttons,
+.action-buttons {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.welcome-upload-button,
+.attachment-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: var(--secondary-color);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.welcome-upload-button:hover,
+.attachment-button:hover {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--primary-color);
+}
+
+.welcome-send-button,
+.send-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.welcome-send-button:hover,
+.send-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.welcome-send-button:disabled,
+.send-button:disabled {
+  background-color: var(--disabled-color);
+  color: var(--secondary-color);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Add specific overrides for light and sepia themes */
+body.light-theme .welcome-send-button:disabled,
+body.light-theme .send-button:disabled,
+body.sepia-theme .welcome-send-button:disabled,
+body.sepia-theme .send-button:disabled {
+  color: #707070;
+}
+
+.welcome-loading-spinner,
+.loading-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer notes */
+.input-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.input-tip {
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+.welcome-footer {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 12px;
+  color: var(--secondary-color);
+}
+
+/* Add these styles for file attachments */
+.file-attachment-container {
+  width: 100%;
+  max-width: 790px;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 auto 15px;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Welcome mode specific file attachment container */
+.welcome-input-container .file-attachment-container {
+  max-width: 661px;
+  padding: 0;
+  justify-content: flex-start;
+  margin: 0 auto 15px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.file-attachment-preview {
+  margin: 0;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: 200px;
+  min-width: 180px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+body.dark-theme .file-attachment-preview {
+  background-color: #2c313f;
+}
+
+body.light-theme .file-attachment-preview {
+  background-color: #f5f5f5;
+}
+
+body.sepia-theme .file-attachment-preview {
+  background-color: #f0e9d9;
+}
+
+.preview-content {
+  display: flex;
+  align-items: center;
+}
+
+.preview-file-info {
+  flex: 1;
+  margin-left: 12px;
+  overflow: hidden;
+}
+
+.preview-file-name {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.preview-file-size {
+  font-size: 12px;
+  color: #666;
+}
+
+body.dark-theme .preview-file-size {
+  color: #bbb;
+}
+
+body.light-theme .preview-file-size {
+  color: #666;
+}
+
+body.sepia-theme .preview-file-size {
+  color: #8a7a6d;
+}
+
+.remove-file-button {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+body.dark-theme .remove-file-button {
+  color: #aaa;
+}
+
+body.light-theme .remove-file-button {
+  color: #666;
+}
+
+body.sepia-theme .remove-file-button {
+  color: #8a7a6d;
+}
+
+.remove-file-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+body.dark-theme .remove-file-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+body.light-theme .remove-file-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+body.sepia-theme .remove-file-button:hover {
+  background-color: rgba(91, 70, 54, 0.05);
+  color: #5b4636;
+}
+
+.attachment-button.active {
+  color: var(--primary-color);
+  background-color: transparent;
+}
+
+/* Improve the input container styling for light/sepia themes */
+body.light-theme .message-input-container {
+  background-color: var(--chat-bg);
+  box-shadow: none;
+}
+
+body.sepia-theme .message-input-container {
+  background-color: var(--chat-bg);
+  box-shadow: none;
+}
+
+/* Enhance the input styling for light theme */
+body.light-theme .message-input {
+  border: 1px solid #d9e6f6;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(30, 58, 95, 0.05);
+}
+
+/* Enhance the input styling for sepia theme */
+body.sepia-theme .message-input {
+  border: 1px solid #e0d6c8;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(91, 70, 54, 0.05);
+}
+
+/* Sepia theme disabled states - consolidated */
+body.sepia-theme .message-input:disabled ~ .chat-model-buttons {
+  background-color: #fff;
+  opacity: 0.8;
+}
+
+body.sepia-theme .welcome-input:disabled ~ .welcome-model-buttons {
+  background-color: var(--tertiary-bg);
+  opacity: 0.8;
+}
+
+/* Custom Alert Styles */
+.custom-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--dark-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.custom-alert-modal {
+  background-color: var(--tertiary-bg);
+  border-radius: 12px;
+  box-shadow: var(--context-menu-shadow);
+  border: 1px solid var(--border-color);
+  min-width: 320px;
+  max-width: 500px;
+  margin: 20px;
+  animation: alertSlideIn 0.2s ease-out;
+}
+
+.custom-alert-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.custom-alert-icon {
+  margin-bottom: 16px;
+  color: var(--error-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-alert-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+.custom-alert-message {
+  color: var(--primary-color);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 24px;
+  white-space: pre-line;
+  max-width: 400px;
+}
+
+.custom-alert-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.custom-alert-button:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.custom-alert-button:active {
+  transform: translateY(0);
+}
+
+@keyframes alertSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Light theme overrides */
+body.light-theme .custom-alert-modal {
+  background-color: #ffffff;
+  border: 1px solid #d9e6f6;
+  box-shadow: 0 10px 40px rgba(30, 58, 95, 0.15), 0 4px 12px rgba(30, 58, 95, 0.1);
+}
+
+body.light-theme .custom-alert-message {
+  color: var(--primary-color);
+}
+
+body.light-theme .custom-alert-button {
+  background-color: var(--accent-color);
+}
+
+body.light-theme .custom-alert-button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Sepia theme overrides */
+body.sepia-theme .custom-alert-modal {
+  background-color: #fff;
+  border: 1px solid #e0d6c8;
+  box-shadow: 0 10px 40px rgba(91, 70, 54, 0.15), 0 4px 12px rgba(91, 70, 54, 0.1);
+}
+
+body.sepia-theme .custom-alert-message {
+  color: var(--primary-color);
+}
+
+body.sepia-theme .custom-alert-button {
+  background-color: var(--accent-color);
+}
+
+body.sepia-theme .custom-alert-button:hover {
+  background-color: var(--accent-hover);
+}

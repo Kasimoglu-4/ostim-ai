@@ -1,0 +1,118 @@
+/* =================================
+   WELCOME SCREEN COMPONENT STYLES
+   ================================= */
+
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: var(--welcome-gap, 50px);
+  background-color: var(--welcome-bg);
+  color: var(--primary-color);
+  padding: var(--welcome-padding, 40px 20px);
+  width: 100%;
+  max-width: 100%;
+}
+
+.welcome-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--welcome-header-gap, 20px);
+}
+
+.welcome-logo-container {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap, 15px);
+}
+
+.welcome-logo {
+  height: var(--logo-height, 40px);
+  width: auto;
+  border-radius: var(--border-radius-sm, 8px);
+}
+
+.welcome-title {
+  font-size: var(--welcome-title-size, 28px);
+  font-weight: 600;
+  margin: 0;
+  font-family: var(--font-family-primary);
+  font-display: swap;
+  color: var(--primary-color);
+}
+
+.welcome-subtitle {
+  font-size: var(--welcome-subtitle-size, 16px);
+  font-family: var(--font-family-primary);
+  color: var(--secondary-color);
+  font-display: swap;
+  margin: 0;
+}
+
+.welcome-input-container {
+  width: 100%;
+  max-width: var(--welcome-input-max-width, 800px);
+  position: relative;
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .welcome-screen {
+    gap: var(--welcome-gap-tablet, 40px);
+    padding: var(--welcome-padding-tablet, 30px 15px);
+  }
+  
+  .welcome-title {
+    font-size: var(--welcome-title-size-tablet, 24px);
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 480px) {
+  .welcome-screen {
+    gap: var(--welcome-gap-mobile, 30px);
+    padding: var(--welcome-padding-mobile, 20px 10px);
+  }
+  
+  .welcome-title {
+    font-size: var(--welcome-title-size-mobile, 20px);
+  }
+  
+  .welcome-logo-container {
+    flex-direction: column;
+    gap: var(--logo-gap-mobile, 10px);
+  }
+}
+
+/* =================================
+   THEME-SPECIFIC OVERRIDES
+   ================================= */
+
+/* Light theme specific adjustments */
+body.light-theme .welcome-screen {
+  background-color: var(--welcome-bg);
+}
+
+/* Sepia theme specific adjustments */
+body.sepia-theme .welcome-screen {
+  background-color: var(--welcome-bg);
+}
+
+/* =================================
+   ACCESSIBILITY
+   ================================= */
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .welcome-screen {
+    transition: none;
+  }
+} 

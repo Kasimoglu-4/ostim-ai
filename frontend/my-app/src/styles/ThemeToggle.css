@@ -1,0 +1,79 @@
+.theme-toggle-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.theme-segmented-control {
+  display: flex;
+  gap: 8px;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 4px;
+  border-radius: 32px;
+}
+
+.theme-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--secondary-color);
+}
+
+.theme-segment:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.theme-segment.active {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.theme-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Theme-specific overrides */
+body.dark-theme .theme-segmented-control {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+body.light-theme .theme-segmented-control {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+body.sepia-theme .theme-segmented-control {
+  background-color: rgba(166, 124, 82, 0.1);
+}
+
+body.light-theme .theme-segment:not(.active) {
+  color: #666;
+}
+
+body.sepia-theme .theme-segment:not(.active) {
+  color: #8a7a6d;
+}
+
+/* Login-specific styles */
+.loginBox .theme-segment {
+  color: #444 !important;
+}
+
+.loginBox .theme-segment.active {
+  color: white !important;
+}
+
+.loginBox .theme-segment:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.loginBox .theme-segmented-control {
+  background-color: rgba(0, 0, 0, 0.05);
+} 

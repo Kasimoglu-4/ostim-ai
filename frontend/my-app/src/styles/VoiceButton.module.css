@@ -1,0 +1,283 @@
+/* Voice Button Container */
+.voiceButtonContainer {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Base Voice Button Styles */
+.voiceButton {
+  transition: all 0.3s ease !important;
+  border-radius: 50% !important;
+  position: relative;
+  z-index: 2;
+}
+
+/* Button States */
+.voiceButtonIdle {
+  color: var(--text-color-secondary) !important;
+  background-color: transparent !important;
+}
+
+.voiceButtonIdle:hover {
+  color: var(--accent-color) !important;
+  background-color: var(--accent-color-10) !important;
+  transform: scale(1.05);
+}
+
+.voiceButtonListening {
+  color: #ff4444 !important;
+  background-color: rgba(255, 68, 68, 0.1) !important;
+  animation: pulse 2s infinite;
+}
+
+.voiceButtonListening:hover {
+  color: #ff2222 !important;
+  background-color: rgba(255, 68, 68, 0.2) !important;
+}
+
+.voiceButtonError {
+  color: #ff6b6b !important;
+  background-color: rgba(255, 107, 107, 0.1) !important;
+  opacity: 0.7;
+}
+
+.voiceButtonUnsupported {
+  color: var(--text-color-muted) !important;
+  background-color: transparent !important;
+  opacity: 0.5;
+  cursor: not-allowed !important;
+}
+
+/* Listening Indicator */
+.listeningIndicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pulseRing {
+  position: absolute;
+  border: 2px solid #ff4444;
+  border-radius: 50%;
+  animation: pulsate 2s ease-out infinite;
+  opacity: 0;
+  width: 40px;
+  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pulseRing:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.pulseRing:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.pulseRing:nth-child(3) {
+  animation-delay: 1.2s;
+}
+
+/* Voice Transcript Panel */
+.voiceTranscriptPanel {
+  background: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.voiceTranscriptHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.voiceTranscriptTitle {
+  color: var(--text-color-secondary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.recordingChip {
+  animation: pulse 2s infinite;
+}
+
+.voiceTranscriptContent {
+  min-height: 24px;
+  padding: 8px 0;
+}
+
+.transcript {
+  color: var(--text-color);
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.transcriptPlaceholder {
+  color: var(--text-color-muted);
+  font-style: italic;
+}
+
+.voiceError {
+  margin-top: 8px;
+  padding: 4px 8px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes pulsate {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+/* Theme-specific Styles */
+
+/* Light Theme */
+:global(.light-theme) .voiceButtonIdle {
+  color: #666666 !important;
+}
+
+:global(.light-theme) .voiceButtonIdle:hover {
+  color: #2196f3 !important;
+  background-color: rgba(33, 150, 243, 0.1) !important;
+}
+
+:global(.light-theme) .pulseRing {
+  border-color: #ff4444;
+}
+
+:global(.light-theme) .voiceTranscriptPanel {
+  background: #f8f9fa;
+  border-color: #e0e0e0;
+  color: #333;
+}
+
+/* Dark Theme */
+:global(.dark-theme) .voiceButtonIdle {
+  color: #b0b0b0 !important;
+}
+
+:global(.dark-theme) .voiceButtonIdle:hover {
+  color: #64b5f6 !important;
+  background-color: rgba(100, 181, 246, 0.1) !important;
+}
+
+:global(.dark-theme) .pulseRing {
+  border-color: #ff6b6b;
+}
+
+:global(.dark-theme) .voiceTranscriptPanel {
+  background: #2d3748;
+  border-color: #4a5568;
+  color: #e2e8f0;
+}
+
+/* Sepia Theme */
+:global(.sepia-theme) .voiceButtonIdle {
+  color: #8b7355 !important;
+}
+
+:global(.sepia-theme) .voiceButtonIdle:hover {
+  color: #d2691e !important;
+  background-color: rgba(210, 105, 30, 0.1) !important;
+}
+
+:global(.sepia-theme) .pulseRing {
+  border-color: #cd5c5c;
+}
+
+:global(.sepia-theme) .voiceTranscriptPanel {
+  background: #f4f1e8;
+  border-color: #d4c5a0;
+  color: #5d4e37;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .voiceButton {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  
+  .pulseRing {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .voiceTranscriptPanel {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .voiceTranscriptTitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* Accessibility */
+.voiceButton:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .voiceButtonListening {
+    border: 2px solid #ff0000;
+  }
+  
+  .voiceButtonError {
+    border: 2px solid #ff6b6b;
+  }
+  
+  .voiceTranscriptPanel {
+    border-width: 2px;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .voiceButton,
+  .pulseRing,
+  .recordingChip {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .voiceButtonListening:hover {
+    transform: none !important;
+  }
+} 

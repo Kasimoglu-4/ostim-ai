@@ -1,0 +1,380 @@
+.sidebar {
+  width: 256px;
+  background-color: #0f1029;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  box-shadow: none;
+}
+
+body.light-theme .sidebar {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(30, 58, 95, 0.05);
+}
+
+body.sepia-theme .sidebar {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid #e0d6c8;
+  box-shadow: 0 1px 3px rgba(91, 70, 54, 0.05);
+}
+
+.sidebar.collapsed {
+  width: 70px;
+  background-color: #0f1029;
+  border-right: none;
+  box-shadow: none;
+}
+
+body.light-theme .sidebar.collapsed {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(30, 58, 95, 0.05);
+}
+
+body.sepia-theme .sidebar.collapsed {
+  background-color: var(--sidebar-bg);
+  border-right: 1px solid #e0d6c8;
+  box-shadow: 0 1px 3px rgba(91, 70, 54, 0.05);
+}
+
+.collapsed-sidebar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 20px 0;
+  align-items: center;
+  background-color: #0f1029;
+}
+
+body.light-theme .collapsed-sidebar-content {
+  background-color: var(--sidebar-bg);
+}
+
+body.sepia-theme .collapsed-sidebar-content {
+  background-color: var(--sidebar-bg);
+}
+
+.collapsed-item {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.collapsed-item:last-child {
+  margin-bottom: 0;
+}
+
+.profile-container {
+  margin-top: auto;
+}
+
+.sidebar-header {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: none;
+}
+
+.logo-clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.logo-clickable:hover {
+  opacity: 0.8;
+}
+
+.collapsed-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.collapsed-logo:hover {
+  opacity: 0.8;
+}
+
+.toggle-sidebar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--tertiary-bg);
+  color: var(--primary-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+.toggle-sidebar:hover {
+  background-color: var(--accent-color);
+}
+
+.new-chat-button-container {
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.new-chat-button {
+  width: 240px;
+  height: 40px;
+  padding: 10px;
+  background-image: linear-gradient(to right, #2e3192, #ed1e79);
+  /* background-color: var(--accent-color); */
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-image 0.5s, transform 0.4s ease-in-out;
+  font-weight: 500;
+  font-size: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.new-chat-button.collapsed {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  padding: 0 0 0 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.new-chat-button:hover {
+  background-image: linear-gradient(to right, #272a7b, #d01a69);
+  transform: translateY(-3px);
+}
+
+.new-chat-button:active {
+  transform: translateY(0px);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 15px;
+  /* border-top: 1px solid var(--border-color); */
+  border: hidden;
+}
+
+.profile-section {
+  margin-bottom: 0px;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.profile-button:hover {
+  background-color: var(--sidebar-item-hover);
+}
+
+.profile-text {
+  color: var(--sidebar-text-hover);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.sidebar-info {
+  font-size: 12px;
+  color: var(--secondary-color);
+  text-align: center;
+}
+
+.version {
+  margin-top: 4px;
+  font-size: 10px;
+  color: var(--secondary-color);
+}
+
+.profile-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background-color: var(--tertiary-bg);
+  color: var(--sidebar-text-hover);
+  transition: all 0.5s ease;
+}
+
+.profile-button:hover .profile-icon {
+  color: var(--sidebar-text-active);
+}
+
+.toggle-sidebar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar.collapsed .toggle-sidebar-wrapper {
+  transform: scale(0.9);
+}
+
+/* Profile dropdown menu styling */
+.profile-dropdown {
+  position: absolute;
+  bottom: 70px;
+  left: 15px;
+  width: 185px;
+  background-color: var(--tertiary-bg);
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  overflow: hidden;
+}
+
+.profile-dropdown.collapsed-dropdown {
+  position: fixed;
+  left: 75px; /* 70px sidebar + 10px gap */
+  bottom: 40px; /* Adjust as needed for your layout */
+  min-width: 185px;
+  max-width: 260px;
+  z-index: 9999;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  background-color: var(--tertiary-bg);
+  border-radius: 12px;
+  padding: 0;
+}
+
+.profile-email {
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  color: var(--sidebar-text-hover);
+  border-bottom: none;
+}
+
+.dropdown-item {
+  display: flex;
+  border-radius: 10px;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: var(--sidebar-text-hover);
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: var(--sidebar-item-hover);
+}
+
+.dropdown-item svg {
+  color: var(--sidebar-text);
+}
+
+.dropdown-item:hover svg {
+  color: var(--sidebar-text-hover);
+}
+
+.profile-container .profile-icon {
+  cursor: pointer;
+  transition: background-image 0.7s ease-in-out;
+}
+
+.profile-container .profile-icon:hover {
+  background-image: linear-gradient(to right, #2e3192, #ed1e79);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  color: white;
+}
+
+body.light-theme .profile-button {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body.sepia-theme .profile-button {
+  border: 1px solid rgba(166, 124, 82, 0.08);
+}
+
+/* Fix today section for light/sepia themes */
+body.light-theme .date-header {
+  color: var(--sidebar-text);
+}
+
+body.sepia-theme .date-header {
+  color: var(--sidebar-text);
+}
+
+/* Fix profile buttons for light/sepia themes */
+body.light-theme .profile-icon {
+  background-color: var(--tertiary-bg);
+  color: var(--sidebar-text-hover);
+}
+
+body.sepia-theme .profile-icon {
+  background-color: var(--tertiary-bg);
+  color: var(--sidebar-text-hover);
+}
+
+/* Fix profile dropdown menu for light/sepia themes */
+body.light-theme .profile-dropdown {
+  background-color: var(--tertiary-bg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+body.sepia-theme .profile-dropdown {
+  background-color: var(--tertiary-bg);
+  box-shadow: 0 5px 15px rgba(91, 70, 54, 0.1);
+}
+
+/* Fix the toggle button for light/sepia themes */
+body.light-theme .toggle-sidebar {
+  background-color: var(--tertiary-bg);
+  color: var(--primary-color);
+}
+
+body.sepia-theme .toggle-sidebar {
+  background-color: var(--tertiary-bg);
+  color: var(--primary-color);
+}
+
+/* Fix profile text for light/sepia themes */
+body.light-theme .profile-text {
+  color: var(--sidebar-text-hover);
+}
+
+body.sepia-theme .profile-text {
+  color: var(--sidebar-text-hover);
+}
+
+/* New chat button looks fine in all themes, let's just adjust shadow for light/sepia */
+body.light-theme .new-chat-button {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.sepia-theme .new-chat-button {
+  box-shadow: 0 2px 5px rgba(91, 70, 54, 0.1);
+}
+
+body.light-theme .new-chat-button.collapsed {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+body.sepia-theme .new-chat-button.collapsed {
+  box-shadow: 0 2px 5px rgba(91, 70, 54, 0.1);
+}

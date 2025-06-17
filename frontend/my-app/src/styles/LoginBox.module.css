@@ -1,0 +1,148 @@
+.loginBox {
+  width: 477px;
+  min-height: 528px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--tertiary-bg) !important;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px var(--dark-overlay);
+  color: var(--primary-color) !important;
+}
+
+.loginBox * {
+  color: var(--primary-color) !important;
+}
+
+.loginBox .MuiInputBase-root,
+.loginBox .MuiInputLabel-root {
+  color: var(--primary-color) !important;
+}
+
+.loginBox .MuiOutlinedInput-notchedOutline {
+  border-color: var(--border-color) !important;
+}
+
+.loginTitle {
+  font-family: 'Zen Tokyo Zoo', cursive, sans-serif !important;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: -0.5px;
+  font-size: 2rem;
+}
+
+.loginBg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--primary-bg);
+  color: var(--primary-color);
+}
+
+.loginTitleBox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.loginSubtitle {
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.loginAlert {
+  width: 100%;
+  margin-bottom: 16px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: rgba(244, 67, 54, 0.1) !important;
+  color: var(--error-color) !important;
+  border: 1px solid var(--error-color) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loginAlert * {
+  color: var(--error-color) !important;
+}
+
+.loginForm {
+  width: 100%;
+}
+
+.loginButton {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.loginButton:hover {
+  background-color: var(--accent-hover) !important;
+}
+
+.loginLinkBox {
+  text-align: center;
+}
+
+.loginLink {
+  color: var(--accent-color) !important;
+  text-decoration: none;
+}
+.loginLink:hover {
+  text-decoration: underline;
+}
+
+.signupButton {
+  background-image: linear-gradient(to right, #6018dc, #eead92) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  transition: all 1.2s ease-in-out !important;
+  font-size: 15px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.signupButton:hover {
+  background-image: linear-gradient(to right, #6018dc64, #ecc5b5) !important;
+}
+
+.signinButton {
+  background-image: linear-gradient(to right, #00537e , #3aa17e) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  transition: all 1.2s ease-in-out !important;
+  font-size: 15px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+.signinButton:hover {
+  background-image: linear-gradient(to right, #2a7ba3 , #57c6a1) !important;
+}
+
+.genos {
+  font-family: "Genos", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.zenTokyoZoo {
+  font-family: "Zen Tokyo Zoo", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.themeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 24px;
+  width: 100%;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.themeLabel {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--secondary-color) !important;
+  font-weight: 500;
+} 

@@ -1,0 +1,18 @@
+export const SIDEBAR_WIDTH = {
+  EXPANDED: 256,
+  COLLAPSED: 70
+};
+
+export const SIDEBAR_ACTIONS = {
+  TOGGLE_SIDEBAR: 'TOGGLE_SIDEBAR',
+  TOGGLE_PROFILE_MENU: 'TOGGLE_PROFILE_MENU',
+  OPEN_SETTINGS_MODAL: 'OPEN_SETTINGS_MODAL',
+  CLOSE_SETTINGS_MODAL: 'CLOSE_SETTINGS_MODAL',
+  CLOSE_PROFILE_MENU: 'CLOSE_PROFILE_MENU'
+};
+
+export const SIDEBAR_INITIAL_STATE = {
+  isSidebarCollapsed: false,
+  isProfileMenuOpen: false,
+  showSettingsModal: false
+}; 

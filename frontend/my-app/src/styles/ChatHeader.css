@@ -1,0 +1,143 @@
+/* =================================
+   CHAT HEADER COMPONENT STYLES
+   ================================= */
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--header-padding, 10px 20px);
+  border-bottom: none;
+  background-color: var(--chat-header-bg);
+  position: relative;
+  box-shadow: none;
+}
+
+.chat-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+}
+
+.chat-title {
+  font-size: var(--title-font-size, 19px);
+  font-weight: 600;
+  color: var(--primary-color);
+  cursor: pointer;
+  text-align: center;
+  margin: 0;
+  padding: 5px 10px;
+  border-radius: var(--border-radius-sm, 4px);
+  transition: background-color 0.2s ease;
+}
+
+.chat-title:hover {
+  background-color: var(--sidebar-item-hover);
+}
+
+.chat-title-input {
+  font-size: var(--title-font-size, 19px);
+  font-weight: 600;
+  color: var(--primary-color);
+  background-color: var(--tertiary-bg);
+  border: 3px solid var(--accent-color);
+  border-radius: var(--border-radius-lg, 12px);
+  padding: 5px 10px;
+  text-align: center;
+  outline: none;
+}
+
+.chat-header-actions {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: var(--spacing-sm, 8px);
+}
+
+.share-button {
+  background-color: var(--accent-color);
+  color: var(--button-text-color, white);
+  border: none;
+  padding: var(--button-padding-sm, 8px 14px);
+  border-radius: var(--button-border-radius, 50px);
+  font-size: var(--font-size-sm, 14px);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: var(--icon-gap, 6px);
+}
+
+.share-button:hover {
+  background-color: var(--accent-hover);
+}
+
+.share-button:active {
+  transform: translateY(0);
+}
+
+/* =================================
+   RESPONSIVE DESIGN
+   ================================= */
+
+/* Mobile breakpoint */
+@media (max-width: 480px) {
+  .chat-header {
+    padding: var(--header-padding-mobile, 8px 15px);
+  }
+  
+  .chat-title {
+    font-size: var(--title-font-size-mobile, 16px);
+  }
+  
+  .share-button {
+    padding: var(--button-padding-mobile, 6px 10px);
+    font-size: var(--font-size-mobile, 12px);
+  }
+}
+
+/* =================================
+   ACCESSIBILITY
+   ================================= */
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .chat-title {
+    border: 1px solid var(--border-color);
+  }
+  
+  .share-button {
+    border: 1px solid var(--button-border-color);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .chat-title,
+  .share-button {
+    transition: none;
+  }
+}
+
+/* =================================
+   THEME-SPECIFIC OVERRIDES
+   ================================= */
+
+/* Light theme specific adjustments */
+body.light-theme .chat-header {
+  background-color: var(--chat-header-bg);
+  border-bottom: none;
+  box-shadow: none;
+}
+
+/* Sepia theme specific adjustments */
+body.sepia-theme .chat-header {
+  background-color: var(--chat-header-bg);
+  border-bottom: none;
+  box-shadow: none;
+} 
